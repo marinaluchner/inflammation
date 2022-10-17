@@ -29,6 +29,50 @@ def test_daily_mean_integers():
     # Need to use Numpy testing functions to compare arrays
     npt.assert_array_equal(np.array([3, 4]), daily_mean(test_array))
 
+def test_daily_max_zeros():
+    """Test that max function works for an array of zeros."""
+    from inflammation.models import daily_max
+
+    test_array = np.array([[0, 0],
+                           [0, 0],
+                           [0, 0]]) # yapf: disable
+
+    # Neet to use Numpy testing function to compare arrays
+    npt.assert_array_equal(np.array([0, 0]), daily_max(test_array))
+
+def test_daily_may_integer():
+    """Test that max function works for an array of positive integers."""
+    from inflammation.models import daily_max
+
+    test_array = np.array([[1, 2],
+                           [3, 4],
+                           [5, 6]]) # yapf: disable
+
+    # Need to use Numpy testing function to compare arrays
+    npt.assert_array_equal(np.array([5, 6]), daily_max(test_array))
+
+def test_daily_min_zeros():
+    """Test that the min function works for an array of zeros."""
+    from inflammation.models import daily_min
+
+    test_array = np.array([[0, 0],
+                           [0, 0],
+                           [0, 0]]) # yapf: disable
+    
+    # Need to use Numpy testing function to compare arrays
+    npt.assert_array_equal(np.array([0, 0]), daily_min(test_array))
+
+def test_daily_min_integer():
+    """Test that min function works for an array of positive integers."""
+    from inflammation.models import daily_min
+
+    test_array = np.array([[1, 2],
+                           [3, 4],
+                           [5, 6]]) # yapf: disable
+
+    # Need to use Numpy testing function to compare arrays
+    npt.assert_array_equal(np.array([1, 2]), daily_min(test_array))
+
 @patch('inflammation.models.get_data_dir', return_value='/data_dir')
 def test_load_csv(mock_get_data_dir):
     from inflammation.models import load_csv
